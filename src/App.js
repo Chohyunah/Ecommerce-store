@@ -23,6 +23,8 @@ function App(){
         <Nav className="me-auto">
           <Nav.Link onClick={() => {navigate('/')}}>Home</Nav.Link>
           <Nav.Link onClick={() => {navigate('/detail')}}>Detail</Nav.Link>
+          <Nav.Link onClick={() => {navigate('/cart')}}>Cart</Nav.Link>
+
         </Nav>
         </Container>
       </Navbar>
@@ -36,7 +38,7 @@ function App(){
             {
               postype.map((a, i)=>{
                 return (
-                <Content postype={postype[i]} i={i}></Content>
+                <Content postype={postype[i]} navigate={navigate} i={i}></Content>
                 )
                 })
             }
@@ -57,10 +59,7 @@ function App(){
           </> 
         }/>
         <Route path="/detail/:id" element={<Detail postype={postype}/>}/>
-        <Route path="*" element={<div>404 error</div>}></Route> {/* *은 위에 있는 경로를 제외한 오타 및 나머지 주소 */}
-        
-
-        <Route path = "cart" element={<Cart/>}></Route>
+        <Route path = "/cart" element={<Cart/>}>Cart</Route>
       </Routes>
 
       </div>
@@ -70,7 +69,7 @@ function App(){
 function Content (props) {
   return (
         <div className="col-md-4">
-          <img src={"/images/mem"+props.i+".jpg"} width="80%"/>
+          <img src={"/images/mem"+props.i+".jpg"} onClick={() => {props.navigate('/detail/1')}} width="80%"/>
           <h4>{props.postype.title}</h4>
           <p>{props.postype.content}</p>
         </div>

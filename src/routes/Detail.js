@@ -2,10 +2,14 @@ import { useParams } from 'react-router-dom'
 import { Nav } from 'react-bootstrap'
 import { useEffect, useState } from 'react';
 import './Detail.css';
+import { useDispatch, useSelector } from 'react-redux'
+import { increase, addItem } from './../store.js'
 /* import {Context1} from './../App.js' */
 
 
 function Detail(props){
+  let state =  useSelector((state) => state ) //Redux store 가져와줌
+  let dispatch = useDispatch() //store.js로 요청을 보내주는 함수
   
   let {id} = useParams();
   let [tab, setTab] = useState(0) /* 0번째 탭이 보이는 상태 */
@@ -19,7 +23,10 @@ function Detail(props){
             <h4 className="pt-5">{props.postype[id].title}</h4>
             <p>{props.postype[id].content}</p>
             <p>{props.postype[id].writer}</p>
-            <button className="btn btn-danger">관심목록</button> 
+            <button className="btn btn-danger" onClick={()=>{
+              dispatch(addItem( {id : (id), name : (props.postype[id].content), count : 1} ))
+              alert('해당 상품이 장바구니에 담겼습니다.')
+            }}>주문하기</button>
           </div>
         </div>
         <br></br>
