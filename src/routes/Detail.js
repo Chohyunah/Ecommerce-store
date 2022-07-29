@@ -2,17 +2,25 @@ import { useParams } from 'react-router-dom'
 import { Nav } from 'react-bootstrap'
 import { useEffect, useState } from 'react';
 import './Detail.css';
-import { useDispatch, useSelector } from 'react-redux'
-import { increase, addItem } from './../store.js'
-/* import {Context1} from './../App.js' */
+import { useDispatch } from 'react-redux'
+import { addItem } from './../store.js'
 
 
 function Detail(props){
-  let state =  useSelector((state) => state ) //Redux store 가져와줌
-  let dispatch = useDispatch() //store.js로 요청을 보내주는 함수
-  
   let {id} = useParams();
+  let findgoods = props.postype.find(x => x.id == id);
   let [tab, setTab] = useState(0) /* 0번째 탭이 보이는 상태 */
+  let dispatch = useDispatch() //store.js로 요청을 보내주는 함수
+
+
+  useEffect(()=>{ //유즈이펙트는 컴포넌트가 로드될때 특정코드가 실행된다
+    let getgoods = localStorage.getItem('watched')
+    getgoods = JSON.parse(getgoods)
+    getgoods.push(findgoods.id)
+    getgoods = new Set(getgoods) //array에서 중복을 쉽게 제거하는 법 Set()
+    getgoods = Array.from(getgoods)
+    localStorage.setItem('watched', JSON.stringify(getgoods))
+  })
     return (
       <div className="container">
         <div className="row">
