@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react'
+/* eslint-disable */
+import { createContext, useEffect, useState } from 'react'
 import {Navbar, Container, Nav} from 'react-bootstrap'
 import {Routes, Route, Link, useNavigate, Outlet} from 'react-router-dom'
 import './App.css'
@@ -7,13 +8,19 @@ import Cart from './routes/Cart.js';
 import Detail from './routes/Detail.js';
 import axios from 'axios';
 
-
-
 function App(){
 
+  useEffect(()=> {
+    localStorage.setItem('watched', JSON.stringify([])) 
+  },[] )
+
+ /*  누가 Detail 페이지에 접속하면
+  그페이지에 보이느 상품id 가져와서
+  localStorage에 watched 항목에 추가 */
+
   let [postype, setPostype] = useState(data)
-  let [재고] = useState([10,11,12])
   let navigate = useNavigate(); //페이지 이동을 도와주는 함수
+  let [재고] = useState([10,11,12])
     return (
     <div>
 
@@ -38,9 +45,8 @@ function App(){
             {
               postype.map((a, i)=>{
                 return (
-                <Content postype={postype[i]} navigate={navigate} i={i}></Content>
-                )
-                })
+                    <Content postype={postype[i]} navigate={navigate} i={i}></Content>
+                )})
             }
        
             </div>
@@ -55,9 +61,10 @@ function App(){
             .catch(()=>{
               console.log('실패함')
             })
-          }}>버튼</button>
+          }}>더보기</button>
           </> 
         }/>
+
         <Route path="/detail/:id" element={<Detail postype={postype}/>}/>
         <Route path = "/cart" element={<Cart/>}>Cart</Route>
       </Routes>
@@ -69,9 +76,11 @@ function App(){
 function Content (props) {
   return (
         <div className="col-md-4">
-          <img src={"/images/mem"+props.i+".jpg"} onClick={() => {props.navigate('/detail/1')}} width="80%"/>
-          <h4>{props.postype.title}</h4>
-          <p>{props.postype.content}</p>
+          <Link to = {"/detail/"+props.postype.id}>
+            <img src={"/images/mem"+props.i+".jpg"} width="80%"/>
+            <h4>{props.postype.title}</h4>
+            <p>{props.postype.content}</p>
+          </Link>
         </div>
   )
 }

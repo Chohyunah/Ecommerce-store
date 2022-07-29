@@ -8,3 +8,13 @@
 .container{
   vertical-align: auto;
 }
+
+a{
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
+  transition: all 0.5s;
+}
