@@ -5,8 +5,7 @@ let cart = createSlice ({
   name: 'cart',
   initialState:
   [
-    {id : 0, name : '분리불안', count : 2},
-    {id : 2, name : '오심(惡心)', count : 1}
+    {id : 0, name : 'Air Force 1 07 Low White', count : 0}
   ],
   reducers: {
     increase(state, action){

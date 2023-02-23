@@ -1,7 +1,9 @@
 .main-bg{
-  background-image: url('./img/nct_logo.png');
-  height: 250px;
-  background-size: cover;
+  background-image: url('./Logo_NIKE.png');
+  height: 100px;
+  margin: 50px;
+  background-repeat: no-repeat;
+  background-size: contain;
   background-position: center;
 }
 
@@ -17,4 +19,10 @@ a:hover{
   color: black;
   font-family: 'Courier New', Courier, monospace;
   transition: all 0.5s;
+}
+
+.cart{
+  display: flex;
+  justify-content: space-between;
+  float: right;
 }

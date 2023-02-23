@@ -8,7 +8,7 @@ import { addItem } from './../store.js'
 
 function Detail(props){
   let {id} = useParams();
-  let findgoods = props.postype.find(x => x.id == id);
+  let findgoods = props.shoes.find(x => x.id == id);
   let [tab, setTab] = useState(0) /* 0번째 탭이 보이는 상태 */
   let dispatch = useDispatch() //store.js로 요청을 보내주는 함수
 
@@ -25,14 +25,14 @@ function Detail(props){
       <div className="container">
         <div className="row">
           <div className="col-md-6">
-            <img src={"/images/mem"+(id)+".jpg"} width="100%" />
+            <img src={"/images/num"+(id)+".png"} width="100%" />
           </div>
           <div className="col-md-6">
-            <h4 className="pt-5">{props.postype[id].title}</h4>
-            <p>{props.postype[id].content}</p>
-            <p>{props.postype[id].writer}</p>
+            <h4 className="pt-5">{props.shoes[id].title}</h4>
+            <p>{props.shoes[id].content}</p>
+            <p>{props.shoes[id].price}</p>
             <button className="btn btn-danger" onClick={()=>{
-              dispatch(addItem( {id : (id), name : (props.postype[id].content), count : 1} ))
+              dispatch(addItem( {id : (id), name : (props.shoes[id].content), count : 1} ))
               alert('해당 상품이 장바구니에 담겼습니다.')
             }}>주문하기</button>
           </div>
@@ -50,14 +50,14 @@ function Detail(props){
           </Nav.Item>
         </Nav>
         
-        <TabContent postype={props.postype} tab={tab}></TabContent>
+        <TabContent shoes={props.shoes} tab={tab}></TabContent>
 
       </div>
 
     )
   }
 
-  function TabContent({tab, postype}){
+  function TabContent({tab, shoes}){
     let [fade, setFade] = useState('')
 
     useEffect(()=>{
@@ -69,7 +69,7 @@ function Detail(props){
 
     return (<div className={'start ' + fade}>
       
-    {[<div>{postype[1].title}</div>,<div>내용1</div>,<div>내용2</div>][tab]}
+    {[<div>{shoes[1].title}</div>,<div>내용1</div>,<div>내용2</div>][tab]}
     </div>)
   }
 

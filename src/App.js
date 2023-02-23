@@ -18,19 +18,17 @@ function App(){
   그페이지에 보이느 상품id 가져와서
   localStorage에 watched 항목에 추가 */
 
-  let [postype, setPostype] = useState(data)
+  let [shoes, setShoes] = useState(data)
   let navigate = useNavigate(); //페이지 이동을 도와주는 함수
   let [재고] = useState([10,11,12])
     return (
     <div>
 
       <Navbar bg="dark" variant="dark">
-        <Container>
-        <Navbar.Brand onClick={() => {navigate('/')}}>BokzaClub</Navbar.Brand>
+        <Container className="cart" >
+        <Navbar.Brand onClick={() => {navigate('/')}}>Shoeper</Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link onClick={() => {navigate('/')}}>Home</Nav.Link>
-          <Nav.Link onClick={() => {navigate('/detail')}}>Detail</Nav.Link>
-          <Nav.Link onClick={() => {navigate('/cart')}}>Cart</Nav.Link>
+          <Nav.Link  onClick={() => {navigate('/cart')}}>🛒</Nav.Link>
 
         </Nav>
         </Container>
@@ -43,9 +41,9 @@ function App(){
           <div className='container'>
             <div className="row">
             {
-              postype.map((a, i)=>{
+              shoes.map((a, i)=>{
                 return (
-                    <Content postype={postype[i]} navigate={navigate} i={i}></Content>
+                    <Content shoes={shoes[i]} navigate={navigate} i={i}></Content>
                 )})
             }
        
@@ -54,9 +52,9 @@ function App(){
 
           <button onClick={() => {
             axios.get('/newdata.json')
-            .then((결과)=>{console.log(결과.data)
-              let copy = [...postype, ...결과.data];
-              setPostype(copy);
+            .then((result)=>{console.log(result.data)
+              let copy = [...shoes, ...result.data];
+              setShoes(copy);
             })
             .catch(()=>{
               console.log('실패함')
@@ -65,8 +63,8 @@ function App(){
           </> 
         }/>
 
-        <Route path="/detail/:id" element={<Detail postype={postype}/>}/>
-        <Route path = "/cart" element={<Cart/>}>Cart</Route>
+        <Route path = "/detail/:id" element={<Detail shoes={shoes}/>}/>
+        <Route path = "/cart" element={<Cart/>}></Route>
       </Routes>
 
       </div>
@@ -76,10 +74,10 @@ function App(){
 function Content (props) {
   return (
         <div className="col-md-4">
-          <Link to = {"/detail/"+props.postype.id}>
-            <img src={"/images/mem"+props.i+".jpg"} width="80%"/>
-            <h4>{props.postype.title}</h4>
-            <p>{props.postype.content}</p>
+          <Link to = {"/detail/"+props.shoes.id}>
+            <img src={"/images/num"+props.i+".png"} width="80%"/>
+            <h4>{props.shoes.title}</h4>
+            <p>{props.shoes.content}</p>
           </Link>
         </div>
   )

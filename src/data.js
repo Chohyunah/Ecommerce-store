@@ -2,21 +2,21 @@
 let data = [
     {
         id : 0,
-        title: "Jeno",
-        content : "분리불안",
-        writer : "반계"
+        title: "Nike",
+        content : "Air Force 1 07 Low White",
+        price : "139000"
     },
     {
         id : 1,
-        title: "Jungwoo",
-        content : "삼천노래방",
-        writer : "은우"
+        title: "New Balance",
+        content : "New Balance 993 Made in USA Grey",
+        price : "149000"
     },
     {
         id : 2,
-        title: "Haechan",
-        content : "오심(惡心)",
-        writer : "Hello Angel"
+        title: "Asics",
+        content : "Gel-Kayano 14 White Midnight",
+        price : "159000"
     }
 ]
 
