@@ -1,6 +1,6 @@
 import { Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { increase } from './../store.js'
+import { increase } from '../store.js'
 
 function Cart() {
 

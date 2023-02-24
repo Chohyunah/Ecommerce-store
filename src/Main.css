@@ -22,7 +22,19 @@ a:hover{
 }
 
 .cart{
+  position: relative;
+}
+
+.plusBtn{
+  position: relative;
+  left: 43%;
+}
+.title{
+  color: white;
+  font-size: larger;
+}
+.nav{
   display: flex;
   justify-content: space-between;
-  float: right;
+
 }

@@ -3,7 +3,7 @@ import { Nav } from 'react-bootstrap'
 import { useEffect, useState } from 'react';
 import './Detail.css';
 import { useDispatch } from 'react-redux'
-import { addItem } from './../store.js'
+import { addItem } from '../store.js'
 
 
 function Detail(props){
