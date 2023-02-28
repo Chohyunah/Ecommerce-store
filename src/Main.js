@@ -26,12 +26,9 @@ function Main(){
 
       <Navbar bg="dark" variant="dark">
         <Container>
-            <div className="nav">
                 <div className='title' onClick={() => {navigate('/')}}>Shoeper</div>
                 <div className='cart' onClick={() => {navigate('/cart')}}>🛒</div>
-            </div>
         </Container>
-        
       </Navbar>
 
       <Routes> /* 메인페이지 */

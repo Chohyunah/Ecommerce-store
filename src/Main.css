@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
 .main-bg{
   background-image: url('./Logo_NIKE.png');
   height: 100px;
@@ -22,19 +23,31 @@ a:hover{
 }
 
 .cart{
-  position: relative;
+  font-size:x-large;
+}
+.cart:hover{
+  background-color: darkgray;
+  border-radius: 100px;
 }
 
 .plusBtn{
   position: relative;
   left: 43%;
+  background-color: white;
+  margin: 10px;
+  border-color: white;
+  box-shadow:none;
+  border-radius: 10px;
+  width: 80px;
+  height: 30px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: small;
+}
+
+.plusBtn:hover{
+  color: white;
 }
 .title{
   color: white;
   font-size: larger;
-}
-.nav{
-  display: flex;
-  justify-content: space-between;
-
 }
